@@ -1,10 +1,13 @@
 package com.micron.PokemonAPI.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.micron.PokemonAPI.entity.enums.Type;
 
 @Document
 public class Pokemon implements Serializable {
@@ -15,18 +18,21 @@ public class Pokemon implements Serializable {
 	private String id;
 	private Integer pokeDexNumber;
 	private String name;
-	// List<Type> types;
+	
+	
+	 List<Type> types;
 	// List<Move> moves;
 
 	public Pokemon() {
 
 	}
 
-	public Pokemon(String id, Integer pokeDexNumber, String name) {
+	public Pokemon(String id, Integer pokeDexNumber, String name, List<Type> types) {
 		super();
 		this.id = id;
 		this.pokeDexNumber = pokeDexNumber;
 		this.name = name;
+		this.types = types;
 	}
 
 	public String getId() {
@@ -53,6 +59,12 @@ public class Pokemon implements Serializable {
 		this.name = name;
 	}
 
+	public List<Type> getTypes(){
+		return types;
+		
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
